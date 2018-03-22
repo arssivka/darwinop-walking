@@ -1,10 +1,11 @@
 # Darwin OP Walking
 
 This repo contains patched walking algorithm for Darwin OP humanoid robot based
-on default gait. You can use it instead default one. Just replace apropriate source files.
+on [default gait](https://sourceforge.net/projects/darwinop/files/Software/Main%20Controller/Source%20Code/). You can use it instead of default one. Just replace apropriate source files.
 
-*Note: USE THIS SOFTWARE AT YOUR OWN RISK  WITHOUT WARRANTY OF ANY KIND. I simplify our last code release by removing some internal classes but
-I can't test this changes. If you find some serious bugs, please tell me about it.* 
+*Note: USE THIS SOFTWARE AT YOUR OWN RISK  WITHOUT WARRANTY OF ANY KIND. I simplified our
+last code release by removing some internal classes but I can't test this changes. If you
+find some serious bugs, please tell me about it.* 
 
 ## Changes list
 
@@ -12,7 +13,7 @@ I can't test this changes. If you find some serious bugs, please tell me about i
 
 Darwin OP with default walking algorithm implementation constantly falls. This
 bug is caused by wrong calculation of influence hip pitch and pelvis offset on
-the hip joints. This angles must affects on the joints with taking into
+the hip joints. This angles should affect on the joints with taking into
 account leg rotation arount z-axis.
 
 ```cpp
@@ -33,7 +34,7 @@ for (int i = 0; i < 14; i++)
 }
 ``` 
 
-You can also try to use code above. I use this version in our robot but
+You can also try to use code above. I'm using this version in our robot but
 I don't remember why :)
 
 ```cpp
@@ -57,9 +58,9 @@ for (int i = 0; i < 14; i++) {
 
 We have written simple odometry accumulator. This algorithm uses position of
 endpoint to calculate shift of leg. Odometry recalculates only at DSP phase.
-If your error accumulation process too fast you will able to calibrate scale of
+If your error accumulation process too fast you will be able to calibrate scale of
 odometry collector by setting X_ODO_FACTOR, Y_ODO_FACTOR or A_ODO_FACTOR.
-Result is saved to X_ODO, Y_ODO and A_ODO members.   
+Results are saved to X_ODO, Y_ODO and A_ODO members.   
 
 ```cpp
 // Calculate odometry
